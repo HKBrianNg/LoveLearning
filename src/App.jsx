@@ -1,23 +1,27 @@
-import React from 'react'
-import {Button, TextField, Box} from '@mui/material'
+import { useState } from 'react'
+import MainLayout from './layout/MainLayout'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import ForgetPassword from './pages/ForgetPassword'
+import Logoff from './pages/Logoff'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home')
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home': return <Home goLogin={() => setCurrentPage('login')} />
+      case 'login': return <Login goHome={() => setCurrentPage('home')} />
+      case 'forget': return <ForgetPassword goHome={() => setCurrentPage('home')} />
+      case 'logoff': return <Logoff goHome={() => setCurrentPage('home')} />
+      default: return <Home />
+    }
+  }
+
   return (
-    <Box sx={{ margin: 5 }}>
-      <h1>我爱学习 Love Learning</h1>
-
-      {/* Material Design 输入框 */}
-      <TextField
-        label="请输入内容"
-        variant="outlined"
-        sx={{ marginRight: 2 }}
-      />
-
-      {/* Material Design 按钮 */}
-      <Button variant="contained" color="primary">
-        提交
-      </Button>
-    </Box>
+    <MainLayout onNavigate={setCurrentPage}>
+      {renderPage()}
+    </MainLayout>
   )
 }
 
