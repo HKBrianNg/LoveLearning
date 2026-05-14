@@ -49,7 +49,21 @@ export const messages = {
 
     // 退出登录
     logoutSuccess: "退出成功",
-    logoutTip: "您已安全退出账号"
+    logoutTip: "您已安全退出账号",
+
+    // 个人资料 / 基础设置
+    editProfile: "编辑个人资料",
+    avatar: "头像",
+    nickname: "昵称",
+    bio: "个人简介",
+    gender: "性别",
+    phone: "手机号",
+    save: "保存",
+    saveSuccess: "保存成功",
+    male: "男",
+    female: "女",
+    secret: "保密",
+    changePassword: "修改密码"
   },
 
   "zh-TW": {
@@ -101,7 +115,21 @@ export const messages = {
 
     // 登出
     logoutSuccess: "登出成功",
-    logoutTip: "您已安全登出帳號"
+    logoutTip: "您已安全登出帳號",
+
+    // 個人資料 / 基礎設定
+    editProfile: "編輯個人資料",
+    avatar: "頭像",
+    nickname: "暱稱",
+    bio: "個人簡介",
+    gender: "性別",
+    phone: "手機號",
+    save: "儲存",
+    saveSuccess: "儲存成功",
+    male: "男",
+    female: "女",
+    secret: "保密",
+    changePassword: "修改密碼"
   },
 
   "en": {
@@ -153,6 +181,20 @@ export const messages = {
 
     // Logoff
     logoutSuccess: "Logged Out",
-    logoutTip: "You have been successfully logged out"
+    logoutTip: "You have been successfully logged out",
+
+    // Profile / Basic Settings
+    editProfile: "Edit Profile",
+    avatar: "Avatar",
+    nickname: "Nickname",
+    bio: "Bio",
+    gender: "Gender",
+    phone: "Phone",
+    save: "Save",
+    saveSuccess: "Saved successfully",
+    male: "Male",
+    female: "Female",
+    secret: "Secret",
+    changePassword: "Change Password"
   }
 };
