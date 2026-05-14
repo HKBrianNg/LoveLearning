@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from './theme.js'
+import { LangProvider } from './context/LangContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,8 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       {/* 自动重置全局样式 = 代替 index.css */}
       <CssBaseline />
-      
-      <App />
+      <LangProvider>
+        <App />
+      </LangProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )

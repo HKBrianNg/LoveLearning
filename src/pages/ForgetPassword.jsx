@@ -1,21 +1,35 @@
 import { useState } from 'react'
-import { Box, Card, CardContent, TextField, Button, Typography, Container } from '@mui/material'
+import { Box, Typography, Card, CardContent, TextField, Button } from '@mui/material'
+import { useLang } from '../context/LangContext'
 
-export default function ForgetPassword({ goHome }) {
+export default function ForgetPassword({ goLogin }) {
+  const { t } = useLang()
   const [email, setEmail] = useState('')
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Card sx={{ width: '100%', borderRadius: 2, boxShadow: 3 }}>
-          <CardContent sx={{ p: 4 }}>
-            <Typography variant="h4" align="center" gutterBottom>忘记密码</Typography>
-            <TextField fullWidth label="邮箱" margin="normal" onChange={(e)=>setEmail(e.target.value)} />
-            <Button fullWidth variant="contained" sx={{ mt:3 }}>发送重置链接</Button>
-            <Button fullWidth sx={{ mt:2 }} onClick={goHome}>返回主页</Button>
-          </CardContent>
-        </Card>
-      </Box>
-    </Container>
+    <Box sx={{ maxWidth: 500, mx: 'auto', mt: 5 }}>
+      <Card>
+        <CardContent sx={{ p: 4 }}>
+          <Typography variant="h4" mb={2}>{t.forgetPwdPage}</Typography>
+          <Typography color="text.secondary" mb={3}>{t.resetPwdTip}</Typography>
+
+          <TextField
+            fullWidth
+            label={t.email}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            margin="normal"
+          />
+
+          <Button fullWidth variant="contained" sx={{ mt: 2 }}>
+            {t.sendResetLink}
+          </Button>
+
+          <Button fullWidth sx={{ mt: 1 }} onClick={goLogin}>
+            {t.backToLogin}
+          </Button>
+        </CardContent>
+      </Card>
+    </Box>
   )
 }

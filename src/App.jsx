@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import ForgetPassword from './pages/ForgetPassword'
 import Logoff from './pages/Logoff'
+import Settings from './pages/Settings'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -14,6 +15,7 @@ function App() {
       case 'login': return <Login goHome={() => setCurrentPage('home')} />
       case 'forget': return <ForgetPassword goHome={() => setCurrentPage('home')} />
       case 'logoff': return <Logoff goHome={() => setCurrentPage('home')} />
+      case 'settings': return <Settings />
       default: return <Home />
     }
   }
