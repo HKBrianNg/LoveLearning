@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import MainLayout from './layout/MainLayout';
+
+// 页面导入
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ForgetPassword from './pages/ForgetPassword';
@@ -7,40 +9,42 @@ import Logoff from './pages/Logoff';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
+import ChangePassword from './pages/ChangePassword';
 
 export default function App() {
-  const [page, setPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('home');
 
-  // 定义导航函数，解决 "handleNavigate is not defined" 报错
-  const handleNavigate = (newPage) => {
-    setPage(newPage);
+  // 统一页面跳转函数
+  const navigateTo = (page) => {
+    setCurrentPage(page);
   };
 
-  // 根据当前 page 渲染不同页面
+  // 渲染当前页面
   const renderPage = () => {
-    switch (page) {
+    switch (currentPage) {
       case 'home':
-        return <Home goLogin={() => handleNavigate('login')} />;
+        return <Home />;
       case 'login':
-        return <Login goHome={() => handleNavigate('home')} />;
+        return <Login goHome={() => navigateTo('home')} />;
       case 'forget':
-        return <ForgetPassword goLogin={() => handleNavigate('login')} />;
+        return <ForgetPassword goLogin={() => navigateTo('login')} />;
       case 'logoff':
-        return <Logoff goHome={() => handleNavigate('home')} />;
+        return <Logoff goHome={() => navigateTo('home')} />;
       case 'settings':
-        // 关键：给 Settings 组件传入 onNavigate
-        return <Settings onNavigate={handleNavigate} />;
+        return <Settings onNavigate={navigateTo} />;
       case 'profile':
-        return <Profile goEdit={() => handleNavigate('profileEdit')} />;
+        return <Profile goEdit={() => navigateTo('profileEdit')} />;
       case 'profileEdit':
-        return <ProfileEdit goBack={() => handleNavigate('profile')} />;
+        return <ProfileEdit goBack={() => navigateTo('profile')} />;
+      case 'changePwd':
+        return <ChangePassword goBack={() => navigateTo('settings')} />;
       default:
-        return <Home goLogin={() => handleNavigate('login')} />;
+        return <Home />;
     }
   };
 
   return (
-    <MainLayout onNavigate={handleNavigate}>
+    <MainLayout onNavigate={navigateTo}>
       {renderPage()}
     </MainLayout>
   );

@@ -51,7 +51,7 @@ export const messages = {
     logoutSuccess: "退出成功",
     logoutTip: "您已安全退出账号",
 
-    // 个人资料 / 基础设置
+    // 个人资料
     editProfile: "编辑个人资料",
     avatar: "头像",
     nickname: "昵称",
@@ -63,7 +63,14 @@ export const messages = {
     male: "男",
     female: "女",
     secret: "保密",
-    changePassword: "修改密码"
+
+    // 修改密码
+    changePassword: "修改密码",
+    oldPassword: "旧密码",
+    newPassword: "新密码",
+    confirmPassword: "确认密码",
+    passwordNotMatch: "两次密码不一致",
+    passwordChanged: "密码修改成功"
   },
 
   "zh-TW": {
@@ -117,7 +124,7 @@ export const messages = {
     logoutSuccess: "登出成功",
     logoutTip: "您已安全登出帳號",
 
-    // 個人資料 / 基礎設定
+    // 個人資料
     editProfile: "編輯個人資料",
     avatar: "頭像",
     nickname: "暱稱",
@@ -129,7 +136,14 @@ export const messages = {
     male: "男",
     female: "女",
     secret: "保密",
-    changePassword: "修改密碼"
+
+    // 修改密碼
+    changePassword: "修改密碼",
+    oldPassword: "舊密碼",
+    newPassword: "新密碼",
+    confirmPassword: "確認密碼",
+    passwordNotMatch: "兩次密碼不一致",
+    passwordChanged: "密碼修改成功"
   },
 
   "en": {
@@ -183,7 +197,7 @@ export const messages = {
     logoutSuccess: "Logged Out",
     logoutTip: "You have been successfully logged out",
 
-    // Profile / Basic Settings
+    // Profile
     editProfile: "Edit Profile",
     avatar: "Avatar",
     nickname: "Nickname",
@@ -195,6 +209,13 @@ export const messages = {
     male: "Male",
     female: "Female",
     secret: "Secret",
-    changePassword: "Change Password"
+
+    // Change Password
+    changePassword: "Change Password",
+    oldPassword: "Old Password",
+    newPassword: "New Password",
+    confirmPassword: "Confirm Password",
+    passwordNotMatch: "Passwords do not match",
+    passwordChanged: "Password changed successfully"
   }
 };
