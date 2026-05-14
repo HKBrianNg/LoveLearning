@@ -1,26 +1,23 @@
 import { Box, Typography, Card, CardContent, Button } from '@mui/material';
 import { useLang } from '../context/LangContext';
 
-export default function Home({ goLogin }) {
+export default function Home() {
   const { t } = useLang();
 
   return (
-    <Box>
-      <Typography variant="h5" color="text.secondary" gutterBottom>
-        {t.welcomeMsg}
-      </Typography>
-
-      <Card sx={{ mt: 4, p: 2 }}>
-        <CardContent>
+    <Box sx={{ maxWidth: 700, mx: 'auto', mt: 4 }}>
+      <Card>
+        <CardContent sx={{ p: 4, textAlign: 'center' }}>
           <Typography variant="h4" gutterBottom>
-            {t.notLoginStatus}
+            {t.platformName}
           </Typography>
-          <Typography variant="body1" sx={{ mb: 3 }}>
+          <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            {t.welcomeMsg}
+          </Typography>
+          <Typography sx={{ mb: 2 }}>
             {t.notLoginTip}
           </Typography>
-          <Button variant="contained" color="primary" onClick={goLogin}>
-            {t.goLogin}
-          </Button>
+          <Button variant="contained">{t.goLogin}</Button>
         </CardContent>
       </Card>
     </Box>

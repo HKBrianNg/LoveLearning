@@ -1,23 +1,14 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 const ThemeContext = createContext();
 
-// ✅ 修复：必须使用 { main: '#xxx' } 格式
 const paletteColors = {
-  blue: {
-    primary: { main: '#1976d2' }
-  },
-  green: {
-    primary: { main: '#388e3c' }
-  },
-  purple: {
-    primary: { main: '#7b1fa2' }
-  },
-  red: {
-    primary: { main: '#d32f2f' }
-  }
+  blue: { primary: { main: '#1976d2' } },
+  green: { primary: { main: '#388e3c' } },
+  purple: { primary: { main: '#7b1fa2' } },
+  red: { primary: { main: '#d32f2f' } }
 };
 
 export function ThemeProviderWrapper({ children }) {
@@ -44,9 +35,9 @@ export function ThemeProviderWrapper({ children }) {
   const theme = createTheme({
     palette: {
       mode,
-      ...paletteColors[color],
+      ...paletteColors[color]
     },
-    spacing: density === 'compact' ? 2 : 4,
+    spacing: density === 'compact' ? 2 : 4
   });
 
   return (

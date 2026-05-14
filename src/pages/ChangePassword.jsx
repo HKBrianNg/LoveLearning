@@ -19,6 +19,7 @@ export default function ChangePassword({ goBack }) {
   };
 
   const handleSubmit = () => {
+    setError('');
     if (form.new !== form.confirm) {
       setError(t.passwordNotMatch);
       return;

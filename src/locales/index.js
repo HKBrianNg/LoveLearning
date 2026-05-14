@@ -1,4 +1,3 @@
-// src/locales/index.js
 export const messages = {
   "zh-CN": {
     home: "首页",
@@ -16,8 +15,6 @@ export const messages = {
     selectLang: "选择语言",
     currentLang: "当前：",
     searchPlaceholder: "搜索课程...",
-
-    // 主题 & 暗黑模式
     darkMode: "暗黑模式",
     themeColor: "主题颜色",
     layoutStyle: "布局风格",
@@ -27,31 +24,21 @@ export const messages = {
     green: "绿色",
     purple: "紫色",
     red: "红色",
-
-    // 首页
     platformName: "乐学所爱",
     welcomeMsg: "欢迎来到主页，请登录后开始学习",
     notLoginStatus: "未登录状态",
     notLoginTip: "请点击右上角头像 → 登录，进入你的学习中心",
     goLogin: "前往登录",
-
-    // 登录
     username: "用户名",
     password: "密码",
     loginBtn: "登录",
     forgetPwdPage: "忘记密码",
-
-    // 忘记密码
     resetPwdTip: "请输入您的邮箱以重置密码",
     email: "邮箱",
     sendResetLink: "发送重置链接",
     backToLogin: "返回登录",
-
-    // 退出登录
     logoutSuccess: "退出成功",
     logoutTip: "您已安全退出账号",
-
-    // 个人资料
     editProfile: "编辑个人资料",
     avatar: "头像",
     nickname: "昵称",
@@ -63,8 +50,6 @@ export const messages = {
     male: "男",
     female: "女",
     secret: "保密",
-
-    // 修改密码
     changePassword: "修改密码",
     oldPassword: "旧密码",
     newPassword: "新密码",
@@ -72,7 +57,6 @@ export const messages = {
     passwordNotMatch: "两次密码不一致",
     passwordChanged: "密码修改成功"
   },
-
   "zh-TW": {
     home: "首頁",
     course: "課程學習",
@@ -89,8 +73,6 @@ export const messages = {
     selectLang: "選擇語言",
     currentLang: "目前：",
     searchPlaceholder: "搜尋課程...",
-
-    // 主題 & 暗黑模式
     darkMode: "暗黑模式",
     themeColor: "主題顏色",
     layoutStyle: "布局風格",
@@ -100,31 +82,21 @@ export const messages = {
     green: "綠色",
     purple: "紫色",
     red: "紅色",
-
-    // 首頁
     platformName: "樂學所愛",
     welcomeMsg: "歡迎來到主頁，請登入後開始學習",
     notLoginStatus: "未登入狀態",
     notLoginTip: "請點擊右上角頭像 → 登入，進入你的學習中心",
     goLogin: "前往登入",
-
-    // 登入
     username: "使用者名稱",
     password: "密碼",
     loginBtn: "登入",
     forgetPwdPage: "忘記密碼",
-
-    // 忘記密碼
     resetPwdTip: "請輸入您的信箱以重置密碼",
     email: "信箱",
     sendResetLink: "發送重置連結",
     backToLogin: "返回登入",
-
-    // 登出
     logoutSuccess: "登出成功",
     logoutTip: "您已安全登出帳號",
-
-    // 個人資料
     editProfile: "編輯個人資料",
     avatar: "頭像",
     nickname: "暱稱",
@@ -136,8 +108,6 @@ export const messages = {
     male: "男",
     female: "女",
     secret: "保密",
-
-    // 修改密碼
     changePassword: "修改密碼",
     oldPassword: "舊密碼",
     newPassword: "新密碼",
@@ -145,7 +115,6 @@ export const messages = {
     passwordNotMatch: "兩次密碼不一致",
     passwordChanged: "密碼修改成功"
   },
-
   "en": {
     home: "Home",
     course: "Courses",
@@ -162,8 +131,6 @@ export const messages = {
     selectLang: "Select Language",
     currentLang: "Current: ",
     searchPlaceholder: "Search courses...",
-
-    // Theme & Dark Mode
     darkMode: "Dark Mode",
     themeColor: "Theme Color",
     layoutStyle: "Layout Style",
@@ -173,31 +140,21 @@ export const messages = {
     green: "Green",
     purple: "Purple",
     red: "Red",
-
-    // Home
     platformName: "Love Learning",
     welcomeMsg: "Welcome to home page, please log in to start learning",
     notLoginStatus: "Not logged in",
     notLoginTip: "Click avatar on top right → Login to enter learning center",
     goLogin: "Go to Login",
-
-    // Login
     username: "Username",
     password: "Password",
     loginBtn: "Login",
     forgetPwdPage: "Forgot Password",
-
-    // Forget Password
     resetPwdTip: "Enter your email to reset password",
     email: "Email",
     sendResetLink: "Send Reset Link",
     backToLogin: "Back to Login",
-
-    // Logoff
     logoutSuccess: "Logged Out",
     logoutTip: "You have been successfully logged out",
-
-    // Profile
     editProfile: "Edit Profile",
     avatar: "Avatar",
     nickname: "Nickname",
@@ -209,8 +166,6 @@ export const messages = {
     male: "Male",
     female: "Female",
     secret: "Secret",
-
-    // Change Password
     changePassword: "Change Password",
     oldPassword: "Old Password",
     newPassword: "New Password",

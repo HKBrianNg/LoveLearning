@@ -4,13 +4,11 @@ import { messages } from '../locales';
 const LangContext = createContext();
 
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('appLang') || 'zh-CN';
-  });
+  const [lang, setLang] = useState(() => localStorage.getItem('lang') || 'zh-CN');
 
   const changeLang = (newLang) => {
     setLang(newLang);
-    localStorage.setItem('appLang', newLang);
+    localStorage.setItem('lang', newLang);
   };
 
   const t = messages[lang];
@@ -22,6 +20,4 @@ export function LangProvider({ children }) {
   );
 }
 
-export function useLang() {
-  return useContext(LangContext);
-}
+export const useLang = () => useContext(LangContext);

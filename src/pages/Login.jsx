@@ -1,56 +1,54 @@
-import { useState } from 'react'
-import { Box, Typography, Card, CardContent, TextField, Button } from '@mui/material'
-import { useLang } from '../context/LangContext'
+import { useState } from 'react';
+import { Box, Typography, Card, CardContent, TextField, Button } from '@mui/material';
+import { useLang } from '../context/LangContext';
+import { useAuth } from '../context/AuthContext'; // 引入 Auth
 
 export default function Login({ goHome }) {
-  const { t } = useLang()
-  const [form, setForm] = useState({ username: '', password: '' })
+  const { t } = useLang();
+  const { login } = useAuth(); // 获取 login 方法
+  const [user, setUser] = useState({ username: '', password: '' });
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm(p => ({ ...p, [name]: value }))
-  }
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   const handleLogin = () => {
-    alert(t.loginBtn + ' success!')
-    goHome()
-  }
+    // 模拟登录：保存用户名到全局状态
+    login({ username: user.username, nickname: user.username });
+    goHome();
+  };
 
   return (
-    <Box sx={{ maxWidth: 500, mx: 'auto', mt: 5 }}>
+    <Box sx={{ maxWidth: 420, mx: 'auto', mt: 6 }}>
       <Card>
         <CardContent sx={{ p: 4 }}>
-          <Typography variant="h4" mb={3}>{t.login}</Typography>
+          <Typography variant="h5" gutterBottom align="center">
+            {t.login}
+          </Typography>
 
           <TextField
             fullWidth
             label={t.username}
             name="username"
-            value={form.username}
+            value={user.username}
             onChange={handleChange}
             margin="normal"
           />
-
           <TextField
             fullWidth
             label={t.password}
             name="password"
             type="password"
-            value={form.password}
+            value={user.password}
             onChange={handleChange}
             margin="normal"
           />
 
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={handleLogin}
-            sx={{ mt: 3 }}
-          >
+          <Button fullWidth variant="contained" sx={{ mt: 3 }} onClick={handleLogin}>
             {t.loginBtn}
           </Button>
         </CardContent>
       </Card>
     </Box>
-  )
+  );
 }

@@ -16,7 +16,6 @@ export default function Settings({ onNavigate }) {
     'en': 'English'
   };
 
-  // 兜底：如果 onNavigate 没传，用空函数防止报错
   const safeNavigate = typeof onNavigate === 'function' ? onNavigate : () => {};
 
   return (
@@ -25,7 +24,6 @@ export default function Settings({ onNavigate }) {
         {t.systemSetting}
       </Typography>
 
-      {/* 语言设置 */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
@@ -49,7 +47,6 @@ export default function Settings({ onNavigate }) {
         </CardContent>
       </Card>
 
-      {/* 暗黑模式 */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
@@ -62,7 +59,6 @@ export default function Settings({ onNavigate }) {
         </CardContent>
       </Card>
 
-      {/* 主题颜色 */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
@@ -84,7 +80,6 @@ export default function Settings({ onNavigate }) {
         </CardContent>
       </Card>
 
-      {/* 布局风格 */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
@@ -104,32 +99,22 @@ export default function Settings({ onNavigate }) {
         </CardContent>
       </Card>
 
-      {/* 基础设置 */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 2 }}>
             {t.baseSetting}
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, maxWidth: 320 }}>
-            <Button
-              variant="outlined"
-              fullWidth
-              onClick={() => safeNavigate('profileEdit')}
-            >
+            <Button variant="outlined" fullWidth onClick={() => safeNavigate('profileEdit')}>
               {t.editProfile}
             </Button>
-            <Button
-              variant="outlined"
-              fullWidth
-              onClick={() => safeNavigate('changePwd')}
-            >
+            <Button variant="outlined" fullWidth onClick={() => safeNavigate('changePwd')}>
               {t.changePassword}
             </Button>
           </Box>
         </CardContent>
       </Card>
 
-      {/* 通知设置 */}
       <Card>
         <CardContent>
           <Typography variant="h6" sx={{ mb: 1 }}>

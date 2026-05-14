@@ -4,27 +4,34 @@ import {
   Button, Avatar, FormControl, InputLabel, Select, MenuItem
 } from '@mui/material';
 import { useLang } from '../context/LangContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function ProfileEdit({ goBack }) {
   const { t } = useLang();
+  const { user, updateUser } = useAuth();
 
-  // 模拟用户数据
   const [form, setForm] = useState({
-    nickname: "张三",
-    bio: "热爱学习，每天进步一点点",
-    gender: "male",
-    phone: "13800138000",
-    email: "test@example.com"
+    nickname: user?.nickname || user?.username || '',
+    bio: user?.bio || '',
+    gender: user?.gender || 'secret',
+    phone: user?.phone || '',
+    email: user?.email || '',
   });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // 保存 → 自动同步右上角！
   const handleSave = () => {
+    updateUser(form);
     alert(t.saveSuccess);
     goBack();
   };
+
+  if (!user) {
+    return <Box sx={{ textAlign:'center', mt:4 }}><Typography>请先登录</Typography></Box>;
+  }
 
   return (
     <Box sx={{ maxWidth: 700, mx: "auto", mt: 4 }}>
@@ -34,17 +41,12 @@ export default function ProfileEdit({ goBack }) {
             {t.editProfile}
           </Typography>
 
-          {/* 头像 */}
           <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-            <Avatar sx={{ width: 100, height: 100 }}>
-              {form.nickname.charAt(0)}
+            <Avatar sx={{ width: 100, height: 100, fontSize:40 }}>
+              {form.nickname.charAt(0) || '?'}
             </Avatar>
           </Box>
-          <Button fullWidth sx={{ mb: 3 }}>
-            {t.avatar}
-          </Button>
 
-          {/* 昵称 */}
           <TextField
             fullWidth
             label={t.nickname}
@@ -54,7 +56,6 @@ export default function ProfileEdit({ goBack }) {
             margin="normal"
           />
 
-          {/* 简介 */}
           <TextField
             fullWidth
             multiline rows={3}
@@ -65,7 +66,6 @@ export default function ProfileEdit({ goBack }) {
             margin="normal"
           />
 
-          {/* 性别 */}
           <FormControl fullWidth margin="normal">
             <InputLabel>{t.gender}</InputLabel>
             <Select
@@ -80,7 +80,6 @@ export default function ProfileEdit({ goBack }) {
             </Select>
           </FormControl>
 
-          {/* 手机 */}
           <TextField
             fullWidth
             label={t.phone}
@@ -90,7 +89,6 @@ export default function ProfileEdit({ goBack }) {
             margin="normal"
           />
 
-          {/* 邮箱 */}
           <TextField
             fullWidth
             label={t.email}

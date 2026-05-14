@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
   Box, CssBaseline, AppBar, Drawer, Toolbar,
   IconButton, Menu, MenuItem, Divider, TextField,
-  List, ListItem, ListItemIcon, ListItemText
+  List, ListItem, ListItemIcon, ListItemText, Typography
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,10 +12,8 @@ import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-// 引入全局语言
 import { useLang } from '../context/LangContext';
-// 引入本地Logo图片
-import Logo from '../assets/logo.png';
+import { useAuth } from '../context/AuthContext'; // 引入 Auth
 
 const drawerWidth = 240;
 
@@ -23,9 +21,8 @@ export default function MainLayout({ children, onNavigate }) {
   const [open, setOpen] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState('');
-
-  // 多语言文案
   const { t } = useLang();
+  const { user, logout } = useAuth(); // 获取用户信息和登出方法
 
   const handleMenuOpen = (e) => setAnchorEl(e.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
@@ -35,7 +32,6 @@ export default function MainLayout({ children, onNavigate }) {
     handleMenuClose();
   };
 
-  // 搜索回车事件
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
       alert(`${t.searchPlaceholder}: ${search}`);
@@ -47,26 +43,16 @@ export default function MainLayout({ children, onNavigate }) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
 
-      {/* 顶部导航栏 */}
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          {/* 侧边栏展开/收起按钮 */}
           <IconButton color="inherit" edge="start" onClick={() => setOpen(!open)} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
 
-          {/* 自定义Logo 替代文字标题 */}
-          <img
-            src={Logo}
-            alt="Love Learning"
-            style={{
-              height: 60,
-              marginRight: 24,
-              objectFit: 'contain'
-            }}
-          />
+          <Box sx={{ fontSize:20, fontWeight:'bold', color:'#fff' }}>
+            Love Learning
+          </Box>
 
-          {/* 搜索框：白色文字 + 靠右 + 多语言占位符 */}
           <TextField
             placeholder={t.searchPlaceholder}
             value={search}
@@ -78,13 +64,8 @@ export default function MainLayout({ children, onNavigate }) {
               ml: 4,
               backgroundColor: 'rgba(255,255,255,0.15)',
               borderRadius: '6px',
-              '& .MuiInputBase-input': {
-                color: '#fff',
-              },
-              '& .MuiInputBase-input::placeholder': {
-                color: 'rgba(255,255,255,0.8) !important',
-                opacity: 1,
-              },
+              '& .MuiInputBase-input': { color: '#fff' },
+              '& .MuiInputBase-input::placeholder': { color: 'rgba(255,255,255,0.8)' },
               '& .MuiOutlinedInput-root': {
                 '& fieldset': { borderColor: 'rgba(255,255,255,0.3)' },
                 '&:hover fieldset': { borderColor: 'rgba(255,255,255,0.6)' },
@@ -95,25 +76,44 @@ export default function MainLayout({ children, onNavigate }) {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* 右上角用户菜单 */}
-          <IconButton color="inherit" onClick={handleMenuOpen}>
+          {/* 右上角：登录显示用户名，未登录显示图标 */}
+          <IconButton color="inherit" onClick={handleMenuOpen} sx={{ display: 'flex', alignItems: 'center' }}>
             <AccountCircle sx={{ fontSize: 28 }} />
+            {user && (
+              <Typography sx={{ ml: 1, fontWeight: 'bold' }}>
+                {user.nickname || user.username}
+              </Typography>
+            )}
           </IconButton>
+
           <Menu
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={() => goTo('home')}>{t.home}</MenuItem>
-            <MenuItem onClick={() => goTo('login')}>{t.login}</MenuItem>
-            <MenuItem onClick={() => goTo('forget')}>{t.forgetPwd}</MenuItem>
-            <Divider />
-            <MenuItem onClick={() => goTo('logoff')}>{t.logoff}</MenuItem>
+            {!user ? (
+              // 未登录菜单
+              <>
+                <MenuItem onClick={() => goTo('home')}>{t.home}</MenuItem>
+                <MenuItem onClick={() => goTo('login')}>{t.login}</MenuItem>
+                <MenuItem onClick={() => goTo('forget')}>{t.forgetPwd}</MenuItem>
+              </>
+            ) : (
+              // 已登录菜单
+              <>
+                <MenuItem onClick={() => goTo('home')}>{t.home}</MenuItem>
+                <MenuItem onClick={() => goTo('profile')}>{t.profile}</MenuItem>
+                <MenuItem onClick={() => goTo('settings')}>{t.settings}</MenuItem>
+                <Divider />
+                <MenuItem onClick={() => { logout(); goTo('logoff'); }}>
+                  {t.logoff}
+                </MenuItem>
+              </>
+            )}
           </Menu>
         </Toolbar>
       </AppBar>
 
-      {/* 侧边栏菜单 */}
       <Drawer
         variant="permanent"
         open={open}
@@ -134,7 +134,7 @@ export default function MainLayout({ children, onNavigate }) {
             <ListItemText primary={t.home} />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={() => goTo('home')}>
             <ListItemIcon><SchoolIcon /></ListItemIcon>
             <ListItemText primary={t.course} />
           </ListItem>
@@ -151,8 +151,7 @@ export default function MainLayout({ children, onNavigate }) {
         </List>
       </Drawer>
 
-      {/* 主内容区域 */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: '#f5f5f5', minHeight: '100vh' }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100vh' }}>
         <Toolbar />
         {children}
       </Box>

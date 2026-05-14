@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { AuthProvider } from './context/AuthContext';
 import MainLayout from './layout/MainLayout';
 
-// 页面导入
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ForgetPassword from './pages/ForgetPassword';
@@ -14,38 +14,29 @@ import ChangePassword from './pages/ChangePassword';
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  // 统一页面跳转函数
   const navigateTo = (page) => {
     setCurrentPage(page);
   };
 
-  // 渲染当前页面
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
-        return <Home />;
-      case 'login':
-        return <Login goHome={() => navigateTo('home')} />;
-      case 'forget':
-        return <ForgetPassword goLogin={() => navigateTo('login')} />;
-      case 'logoff':
-        return <Logoff goHome={() => navigateTo('home')} />;
-      case 'settings':
-        return <Settings onNavigate={navigateTo} />;
-      case 'profile':
-        return <Profile goEdit={() => navigateTo('profileEdit')} />;
-      case 'profileEdit':
-        return <ProfileEdit goBack={() => navigateTo('profile')} />;
-      case 'changePwd':
-        return <ChangePassword goBack={() => navigateTo('settings')} />;
-      default:
-        return <Home />;
+      case 'home': return <Home />;
+      case 'login': return <Login goHome={() => navigateTo('home')} />;
+      case 'forget': return <ForgetPassword goLogin={() => navigateTo('login')} />;
+      case 'logoff': return <Logoff goHome={() => navigateTo('home')} />;
+      case 'settings': return <Settings onNavigate={navigateTo} />;
+      case 'profile': return <Profile goEdit={() => navigateTo('profileEdit')} />;
+      case 'profileEdit': return <ProfileEdit goBack={() => navigateTo('profile')} />;
+      case 'changePwd': return <ChangePassword goBack={() => navigateTo('settings')} />;
+      default: return <Home />;
     }
   };
 
   return (
-    <MainLayout onNavigate={navigateTo}>
-      {renderPage()}
-    </MainLayout>
+    <AuthProvider>
+      <MainLayout onNavigate={navigateTo}>
+        {renderPage()}
+      </MainLayout>
+    </AuthProvider>
   );
 }
