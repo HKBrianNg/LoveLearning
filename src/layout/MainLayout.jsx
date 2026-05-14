@@ -134,7 +134,7 @@ export default function MainLayout({ children, onNavigate }) {
             <ListItemText primary={t.home} />
           </ListItem>
 
-          <ListItem button onClick={() => goTo('home')}>
+          <ListItem button onClick={() => goTo('course')}>
             <ListItemIcon><SchoolIcon /></ListItemIcon>
             <ListItemText primary={t.course} />
           </ListItem>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import MainLayout from './layout/MainLayout';
-
+import Course from './pages/Course';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ForgetPassword from './pages/ForgetPassword';
@@ -21,6 +21,7 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home': return <Home />;
+      case 'course': return <Course />;
       case 'login': return <Login goHome={() => navigateTo('home')} />;
       case 'forget': return <ForgetPassword goLogin={() => navigateTo('login')} />;
       case 'logoff': return <Logoff goHome={() => navigateTo('home')} />;

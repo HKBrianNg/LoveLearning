@@ -55,7 +55,10 @@ export const messages = {
     newPassword: "新密码",
     confirmPassword: "确认密码",
     passwordNotMatch: "两次密码不一致",
-    passwordChanged: "密码修改成功"
+    passwordChanged: "密码修改成功",
+    courseWelcome: "开始今天的课程学习吧",
+    courseNeedLogin: "请先登录，查看全部课程",
+    courseItem: "精品在线课程"
   },
   "zh-TW": {
     home: "首頁",
@@ -75,7 +78,7 @@ export const messages = {
     searchPlaceholder: "搜尋課程...",
     darkMode: "暗黑模式",
     themeColor: "主題顏色",
-    layoutStyle: "布局風格",
+    layoutStyle: "佈局風格",
     compact: "緊湊",
     normal: "標準",
     blue: "藍色",
@@ -96,7 +99,7 @@ export const messages = {
     sendResetLink: "發送重置連結",
     backToLogin: "返回登入",
     logoutSuccess: "登出成功",
-    logoutTip: "您已安全登出帳號",
+    logoutTip: "您已安全退出帳號",
     editProfile: "編輯個人資料",
     avatar: "頭像",
     nickname: "暱稱",
@@ -113,7 +116,10 @@ export const messages = {
     newPassword: "新密碼",
     confirmPassword: "確認密碼",
     passwordNotMatch: "兩次密碼不一致",
-    passwordChanged: "密碼修改成功"
+    passwordChanged: "密碼修改成功",
+    courseWelcome: "開始今天的課程學習吧",
+    courseNeedLogin: "請先登入，查看全部課程",
+    courseItem: "精品線上課程"
   },
   "en": {
     home: "Home",
@@ -143,18 +149,18 @@ export const messages = {
     platformName: "Love Learning",
     welcomeMsg: "Welcome to home page, please log in to start learning",
     notLoginStatus: "Not logged in",
-    notLoginTip: "Click avatar on top right → Login to enter learning center",
+    notLoginTip: "Click the avatar in the upper right → Login to enter your learning center",
     goLogin: "Go to Login",
     username: "Username",
     password: "Password",
     loginBtn: "Login",
-    forgetPwdPage: "Forgot Password",
-    resetPwdTip: "Enter your email to reset password",
+    forgetPwdPage: "Forget Password",
+    resetPwdTip: "Please enter your email to reset password",
     email: "Email",
     sendResetLink: "Send Reset Link",
     backToLogin: "Back to Login",
     logoutSuccess: "Logged Out",
-    logoutTip: "You have been successfully logged out",
+    logoutTip: "You have been logged out safely",
     editProfile: "Edit Profile",
     avatar: "Avatar",
     nickname: "Nickname",
@@ -171,6 +177,9 @@ export const messages = {
     newPassword: "New Password",
     confirmPassword: "Confirm Password",
     passwordNotMatch: "Passwords do not match",
-    passwordChanged: "Password changed successfully"
+    passwordChanged: "Password changed successfully",
+    courseWelcome: "Start your course learning today",
+    courseNeedLogin: "Please log in to view all courses",
+    courseItem: "Premium Online Course"
   }
 };
