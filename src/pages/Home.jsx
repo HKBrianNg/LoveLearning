@@ -6,10 +6,6 @@ export default function Home({ goLogin }) {
 
   return (
     <Box>
-      <Typography variant="h3" gutterBottom>
-        🏠 Love Learning {t.platformName}
-      </Typography>
-
       <Typography variant="h5" color="text.secondary" gutterBottom>
         {t.welcomeMsg}
       </Typography>

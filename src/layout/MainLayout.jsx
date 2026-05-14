@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Box, CssBaseline, AppBar, Drawer, Toolbar, Typography,
+  Box, CssBaseline, AppBar, Drawer, Toolbar,
   IconButton, Menu, MenuItem, Divider, TextField,
   List, ListItem, ListItemIcon, ListItemText
 } from '@mui/material';
@@ -12,8 +12,10 @@ import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-// 全局语言
+// 引入全局语言
 import { useLang } from '../context/LangContext';
+// 引入本地Logo图片
+import Logo from '../assets/logo.png';
 
 const drawerWidth = 240;
 
@@ -22,7 +24,7 @@ export default function MainLayout({ children, onNavigate }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState('');
 
-  // 全局多语言
+  // 多语言文案
   const { t } = useLang();
 
   const handleMenuOpen = (e) => setAnchorEl(e.currentTarget);
@@ -33,7 +35,7 @@ export default function MainLayout({ children, onNavigate }) {
     handleMenuClose();
   };
 
-  // 搜索回车
+  // 搜索回车事件
   const handleSearch = (e) => {
     if (e.key === 'Enter') {
       alert(`${t.searchPlaceholder}: ${search}`);
@@ -48,16 +50,23 @@ export default function MainLayout({ children, onNavigate }) {
       {/* 顶部导航栏 */}
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
+          {/* 侧边栏展开/收起按钮 */}
           <IconButton color="inherit" edge="start" onClick={() => setOpen(!open)} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
 
-          {/* LOGO */}
-          <Typography variant="h6" sx={{ flexGrow: 0, mr: 3 }}>
-            Love Learning
-          </Typography>
+          {/* 自定义Logo 替代文字标题 */}
+          <img
+            src={Logo}
+            alt="Love Learning"
+            style={{
+              height: 60,
+              marginRight: 24,
+              objectFit: 'contain'
+            }}
+          />
 
-          {/* 搜索框 - 白色文字 + 右移 */}
+          {/* 搜索框：白色文字 + 靠右 + 多语言占位符 */}
           <TextField
             placeholder={t.searchPlaceholder}
             value={search}
@@ -67,7 +76,6 @@ export default function MainLayout({ children, onNavigate }) {
             sx={{
               maxWidth: 450,
               ml: 4,
-              mr: 2,
               backgroundColor: 'rgba(255,255,255,0.15)',
               borderRadius: '6px',
               '& .MuiInputBase-input': {
@@ -87,11 +95,15 @@ export default function MainLayout({ children, onNavigate }) {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* 用户菜单 */}
+          {/* 右上角用户菜单 */}
           <IconButton color="inherit" onClick={handleMenuOpen}>
-            <AccountCircle />
+            <AccountCircle sx={{ fontSize: 28 }} />
           </IconButton>
-          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
             <MenuItem onClick={() => goTo('home')}>{t.home}</MenuItem>
             <MenuItem onClick={() => goTo('login')}>{t.login}</MenuItem>
             <MenuItem onClick={() => goTo('forget')}>{t.forgetPwd}</MenuItem>
@@ -101,7 +113,7 @@ export default function MainLayout({ children, onNavigate }) {
         </Toolbar>
       </AppBar>
 
-      {/* 侧边栏菜单 + 图标 + 多语言 */}
+      {/* 侧边栏菜单 */}
       <Drawer
         variant="permanent"
         open={open}
@@ -110,9 +122,9 @@ export default function MainLayout({ children, onNavigate }) {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: open ? drawerWidth : 60,
-            transition: 'width 0.3s',
-            boxSizing: 'border-box'
-          }
+            transition: 'width 0.3s ease',
+            boxSizing: 'border-box',
+          },
         }}
       >
         <Toolbar />
@@ -139,7 +151,7 @@ export default function MainLayout({ children, onNavigate }) {
         </List>
       </Drawer>
 
-      {/* 内容区 */}
+      {/* 主内容区域 */}
       <Box component="main" sx={{ flexGrow: 1, p: 3, bgcolor: '#f5f5f5', minHeight: '100vh' }}>
         <Toolbar />
         {children}
