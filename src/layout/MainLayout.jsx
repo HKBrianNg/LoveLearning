@@ -15,7 +15,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { useLang } from '../context/LangContext';
 import { useAuth } from '../context/AuthContext'; // 引入 Auth
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 export default function MainLayout({ children, onNavigate }) {
   const [open, setOpen] = useState(true);
@@ -146,7 +146,7 @@ export default function MainLayout({ children, onNavigate }) {
             </ListItem>
           )}
           
-          <ListItem button onClick={() => goTo('profile')}>
+          {/* <ListItem button onClick={() => goTo('profile')}>
             <ListItemIcon><PersonIcon /></ListItemIcon>
             <ListItemText primary={t.profile} />
           </ListItem>
@@ -154,7 +154,7 @@ export default function MainLayout({ children, onNavigate }) {
           <ListItem button onClick={() => goTo('settings')}>
             <ListItemIcon><SettingsIcon /></ListItemIcon>
             <ListItemText primary={t.settings} />
-          </ListItem>
+          </ListItem> */}
         </List>
       </Drawer>
 
