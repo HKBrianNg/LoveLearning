@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import ChangePassword from './pages/ChangePassword';
 import Course from './pages/Course';
+import CourseManage from './pages/CourseManage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -42,6 +43,8 @@ export default function App() {
         return <ChangePassword goBack={() => navigateTo('settings')} />;
       case 'course':
         return <Course />;
+      case 'courseManage':
+        return <CourseManage goLogin={() => navigateTo('login')} />;
       default:
         return <Home />;
     }

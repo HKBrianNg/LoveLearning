@@ -28,8 +28,11 @@ exports.login = async (req, res) => {
     const ok = await bcrypt.compare(password, rows[0].password);
     if(!ok) return res.json({ code:400, msg:'密码错误' });
 
-    const token = jwt.sign({ id:rows[0].id, username:rows[0].username },
-      process.env.JWT_SECRET, { expiresIn:'7d' });
+    const token = jwt.sign(
+        { id:rows[0].id, username:rows[0].username, role:rows[0].role },
+        process.env.JWT_SECRET, 
+        { expiresIn:'7d' }
+    );
 
     res.json({
       code:200,
@@ -41,7 +44,8 @@ exports.login = async (req, res) => {
         bio:rows[0].bio,
         gender:rows[0].gender,
         phone:rows[0].phone,
-        email:rows[0].email
+        email:rows[0].email,
+        role:rows[0].role   // 把角色返回给前端
       }
     });
   } catch (err) {
@@ -63,7 +67,8 @@ exports.getUserInfo = async (req, res) => {
         bio:u.bio,
         gender:u.gender,
         phone:u.phone,
-        email:u.email
+        email:u.email,
+        role:u.role
       }
     });
   } catch {

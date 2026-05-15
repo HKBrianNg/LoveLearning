@@ -8,6 +8,7 @@ export const messages = {
     register: "注册",
     logoff: "退出登录",
     forgetPwd: "忘记密码",
+
     systemSetting: "系统设置",
     langSetting: "语言设置",
     baseSetting: "基础设置",
@@ -16,6 +17,7 @@ export const messages = {
     selectLang: "选择语言",
     currentLang: "当前：",
     searchPlaceholder: "搜索课程...",
+
     darkMode: "暗黑模式",
     themeColor: "主题颜色",
     layoutStyle: "布局风格",
@@ -25,13 +27,14 @@ export const messages = {
     green: "绿色",
     purple: "紫色",
     red: "红色",
+
     platformName: "乐学所爱",
     welcomeMsg: "欢迎来到主页，请登录后开始学习",
-    notLoginStatus: "未登录状态",
     notLoginTip: "请点击右上角头像 → 登录，进入你的学习中心",
     goLogin: "前往登录",
     goRegister: "没有账号？去注册",
     haveAccount: "已有账号？去登录",
+
     username: "用户名",
     password: "密码",
     confirmPassword: "确认密码",
@@ -39,13 +42,16 @@ export const messages = {
     registerBtn: "注册",
     pwdNotMatch: "两次密码不一致",
     registerSuccess: "注册成功，请登录",
+
     forgetPwdPage: "忘记密码",
     resetPwdTip: "请输入您的邮箱以重置密码",
     email: "邮箱",
     sendResetLink: "发送重置链接",
     backToLogin: "返回登录",
+
     logoutSuccess: "退出成功",
     logoutTip: "您已安全退出账号",
+
     editProfile: "编辑个人资料",
     avatar: "头像",
     nickname: "昵称",
@@ -54,19 +60,34 @@ export const messages = {
     phone: "手机号",
     save: "保存",
     saveSuccess: "保存成功",
+
     male: "男",
     female: "女",
     secret: "保密",
+
     changePassword: "修改密码",
     oldPassword: "旧密码",
     newPassword: "新密码",
-    confirmPassword: "确认密码",
     passwordNotMatch: "两次密码不一致",
     passwordChanged: "密码修改成功",
+
     courseWelcome: "开始今天的课程学习吧",
     courseNeedLogin: "请先登录，查看全部课程",
-    courseItem: "精品在线课程"
+    courseItem: "精品在线课程",
+
+    // 课程维护 全套
+    courseManage: "课程维护",
+    addCourse: "新增课程",
+    editCourse: "编辑课程",
+    delCourse: "删除课程",
+    courseTitle: "课程名称",
+    courseDesc: "课程简介",
+    confirmDel: "确定要删除该课程吗？",
+    operate: "操作",
+    edit: "编辑",
+    del: "删除"
   },
+
   "zh-TW": {
     home: "首頁",
     course: "課程學習",
@@ -76,6 +97,7 @@ export const messages = {
     register: "註冊",
     logoff: "登出",
     forgetPwd: "忘記密碼",
+
     systemSetting: "系統設定",
     langSetting: "語言設定",
     baseSetting: "基礎設定",
@@ -84,6 +106,7 @@ export const messages = {
     selectLang: "選擇語言",
     currentLang: "目前：",
     searchPlaceholder: "搜尋課程...",
+
     darkMode: "暗黑模式",
     themeColor: "主題顏色",
     layoutStyle: "佈局風格",
@@ -93,13 +116,14 @@ export const messages = {
     green: "綠色",
     purple: "紫色",
     red: "紅色",
+
     platformName: "樂學所愛",
     welcomeMsg: "歡迎來到主頁，請登入後開始學習",
-    notLoginStatus: "未登入狀態",
     notLoginTip: "請點擊右上角頭像 → 登入，進入你的學習中心",
     goLogin: "前往登入",
     goRegister: "沒有帳號？去註冊",
     haveAccount: "已有帳號？去登入",
+
     username: "使用者名稱",
     password: "密碼",
     confirmPassword: "確認密碼",
@@ -107,13 +131,16 @@ export const messages = {
     registerBtn: "註冊",
     pwdNotMatch: "兩次密碼不一致",
     registerSuccess: "註冊成功，請登入",
+
     forgetPwdPage: "忘記密碼",
     resetPwdTip: "請輸入您的信箱以重置密碼",
     email: "信箱",
     sendResetLink: "發送重置連結",
     backToLogin: "返回登入",
+
     logoutSuccess: "登出成功",
     logoutTip: "您已安全退出帳號",
+
     editProfile: "編輯個人資料",
     avatar: "頭像",
     nickname: "暱稱",
@@ -122,19 +149,34 @@ export const messages = {
     phone: "手機號",
     save: "儲存",
     saveSuccess: "儲存成功",
+
     male: "男",
     female: "女",
     secret: "保密",
+
     changePassword: "修改密碼",
     oldPassword: "舊密碼",
     newPassword: "新密碼",
-    confirmPassword: "確認密碼",
     passwordNotMatch: "兩次密碼不一致",
     passwordChanged: "密碼修改成功",
+
     courseWelcome: "開始今天的課程學習吧",
     courseNeedLogin: "請先登入，查看全部課程",
-    courseItem: "精品線上課程"
+    courseItem: "精品線上課程",
+
+    // 課程維護 全套
+    courseManage: "課程維護",
+    addCourse: "新增課程",
+    editCourse: "編輯課程",
+    delCourse: "刪除課程",
+    courseTitle: "課程名稱",
+    courseDesc: "課程簡介",
+    confirmDel: "確定要刪除該課程嗎？",
+    operate: "操作",
+    edit: "編輯",
+    del: "刪除"
   },
+
   "en": {
     home: "Home",
     course: "Courses",
@@ -144,6 +186,7 @@ export const messages = {
     register: "Register",
     logoff: "Logoff",
     forgetPwd: "Forget Password",
+
     systemSetting: "System Settings",
     langSetting: "Language",
     baseSetting: "Basic Settings",
@@ -152,6 +195,7 @@ export const messages = {
     selectLang: "Select Language",
     currentLang: "Current: ",
     searchPlaceholder: "Search courses...",
+
     darkMode: "Dark Mode",
     themeColor: "Theme Color",
     layoutStyle: "Layout Style",
@@ -161,13 +205,14 @@ export const messages = {
     green: "Green",
     purple: "Purple",
     red: "Red",
+
     platformName: "Love Learning",
     welcomeMsg: "Welcome to home page, please log in to start learning",
-    notLoginStatus: "Not logged in",
     notLoginTip: "Click the avatar in the upper right → Login to enter your learning center",
     goLogin: "Go to Login",
     goRegister: "No account? Register",
     haveAccount: "Already have an account? Login",
+
     username: "Username",
     password: "Password",
     confirmPassword: "Confirm Password",
@@ -175,13 +220,16 @@ export const messages = {
     registerBtn: "Register",
     pwdNotMatch: "Passwords do not match",
     registerSuccess: "Registration successful, please login",
+
     forgetPwdPage: "Forget Password",
     resetPwdTip: "Please enter your email to reset password",
     email: "Email",
     sendResetLink: "Send Reset Link",
     backToLogin: "Back to Login",
+
     logoutSuccess: "Logged Out",
     logoutTip: "You have been logged out safely",
+
     editProfile: "Edit Profile",
     avatar: "Avatar",
     nickname: "Nickname",
@@ -190,17 +238,31 @@ export const messages = {
     phone: "Phone",
     save: "Save",
     saveSuccess: "Saved successfully",
+
     male: "Male",
     female: "Female",
     secret: "Secret",
+
     changePassword: "Change Password",
     oldPassword: "Old Password",
     newPassword: "New Password",
-    confirmPassword: "Confirm Password",
     passwordNotMatch: "Passwords do not match",
     passwordChanged: "Password changed successfully",
+
     courseWelcome: "Start your course learning today",
     courseNeedLogin: "Please log in to view all courses",
-    courseItem: "Premium Online Course"
+    courseItem: "Premium Online Course",
+
+    // Course Manage full
+    courseManage: "Course Manage",
+    addCourse: "Add Course",
+    editCourse: "Edit Course",
+    delCourse: "Delete Course",
+    courseTitle: "Course Title",
+    courseDesc: "Course Description",
+    confirmDel: "Are you sure to delete this course?",
+    operate: "Operate",
+    edit: "Edit",
+    del: "Delete"
   }
 };

@@ -139,6 +139,13 @@ export default function MainLayout({ children, onNavigate }) {
             <ListItemText primary={t.course} />
           </ListItem>
 
+          {user && user.role === 'admin' && (
+            <ListItem button onClick={() => goTo('courseManage')}>
+              <ListItemIcon><SettingsIcon /></ListItemIcon>
+              <ListItemText primary={t.courseManage} />
+            </ListItem>
+          )}
+          
           <ListItem button onClick={() => goTo('profile')}>
             <ListItemIcon><PersonIcon /></ListItemIcon>
             <ListItemText primary={t.profile} />
