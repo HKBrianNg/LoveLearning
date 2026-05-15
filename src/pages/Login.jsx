@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import { Box, Typography, Card, CardContent, TextField, Button } from '@mui/material';
 import { useLang } from '../context/LangContext';
-import { useAuth } from '../context/AuthContext'; // 引入 Auth
+import { useAuth } from '../context/AuthContext';
 
-export default function Login({ goHome }) {
+export default function Login({ goHome, goRegister }) {
   const { t } = useLang();
-  const { login } = useAuth(); // 获取 login 方法
-  const [user, setUser] = useState({ username: '', password: '' });
+  const { login } = useAuth();
+  const [form, setForm] = useState({ username: '', password: '' });
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = () => {
-    // 模拟登录：保存用户名到全局状态
-    login({ username: user.username, nickname: user.username });
-    goHome();
+  const handleLogin = async () => {
+    const ok = await login(form.username, form.password);
+    if (ok) goHome();
   };
 
   return (
@@ -30,7 +29,7 @@ export default function Login({ goHome }) {
             fullWidth
             label={t.username}
             name="username"
-            value={user.username}
+            value={form.username}
             onChange={handleChange}
             margin="normal"
           />
@@ -39,13 +38,17 @@ export default function Login({ goHome }) {
             label={t.password}
             name="password"
             type="password"
-            value={user.password}
+            value={form.password}
             onChange={handleChange}
             margin="normal"
           />
 
           <Button fullWidth variant="contained" sx={{ mt: 3 }} onClick={handleLogin}>
             {t.loginBtn}
+          </Button>
+
+          <Button fullWidth sx={{ mt: 2 }} onClick={goRegister}>
+            没有账号？去注册
           </Button>
         </CardContent>
       </Card>
