@@ -1,27 +1,94 @@
-import { Box, Typography, Card, CardContent, Button, Avatar } from '@mui/material';
-import { useLang } from '../context/LangContext';
+import { useState, useEffect } from 'react';
+import {
+  Box, Typography, TextField, Avatar, Paper
+} from '@mui/material';
 import { useAuth } from '../context/AuthContext';
+import { useLang } from '../context/LangContext';
 
-export default function Profile({ goEdit }) {
+export default function Profile() {
   const { t } = useLang();
   const { user } = useAuth();
+  const [form, setForm] = useState({
+    nickname: '',
+    bio: '',
+    gender: '',
+    phone: '',
+    email: ''
+  });
+
+  // 加载用户资料
+  useEffect(() => {
+    if (user) {
+      setForm({
+        nickname: user.nickname || '',
+        bio: user.bio || '',
+        gender: user.gender || '',
+        phone: user.phone || '',
+        email: user.email || ''
+      });
+    }
+  }, [user]);
 
   if (!user) {
-    return <Box sx={{ textAlign: 'center', mt: 4 }}><Typography>请先登录</Typography></Box>;
+    return (
+      <Box sx={{ p: 3, textAlign: 'center' }}>
+        <Typography variant="h6">请先登录</Typography>
+      </Box>
+    );
   }
 
   return (
-    <Box sx={{ maxWidth: 700, mx: 'auto', mt: 4 }}>
-      <Card>
-        <CardContent sx={{ p: 4, textAlign: 'center' }}>
-          <Avatar sx={{ width: 100, height: 100, mx: 'auto', fontSize: 40 }}>
-            {user.nickname?.charAt(0) || user.username?.charAt(0)}
-          </Avatar>
-          <Typography variant="h5" mt={2}>{user.nickname}</Typography>
-          <Typography color="text.secondary" mb={2}>{user.bio}</Typography>
-          <Button variant="contained" onClick={goEdit}>{t.editProfile}</Button>
-        </CardContent>
-      </Card>
-    </Box>
+    <Paper sx={{ maxWidth: 600, mx: 'auto', p: 4, mt: 4 }}>
+      <Typography variant="h5" mb={4}>
+        {t.profile || '个人资料'}
+      </Typography>
+
+      {/* 头像显示 */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+        <Avatar
+          src={user.avatar ? `http://localhost:5000${user.avatar}` : ''}
+          sx={{ width: 100, height: 100, fontSize: 40 }}
+        >
+          {user.nickname?.charAt(0) || user.username?.charAt(0)}
+        </Avatar>
+      </Box>
+
+      {/* 只读表单 */}
+      <TextField
+        fullWidth
+        label={t.nickname || '昵称'}
+        value={form.nickname}
+        InputProps={{ readOnly: true }}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        fullWidth
+        label={t.bio || '简介'}
+        value={form.bio}
+        InputProps={{ readOnly: true }}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        fullWidth
+        label={t.gender || '性别'}
+        value={form.gender}
+        InputProps={{ readOnly: true }}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        fullWidth
+        label={t.phone || '电话'}
+        value={form.phone}
+        InputProps={{ readOnly: true }}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        fullWidth
+        label={t.email || '邮箱'}
+        value={form.email}
+        InputProps={{ readOnly: true }}
+        sx={{ mb: 2 }}
+      />
+    </Paper>
   );
 }

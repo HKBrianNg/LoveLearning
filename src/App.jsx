@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import MainLayout from './layout/MainLayout';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -52,9 +53,11 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <MainLayout onNavigate={navigateTo}>
-        {renderPage()}
-      </MainLayout>
+      <Router>
+        <MainLayout onNavigate={navigateTo}>
+          {renderPage()}
+        </MainLayout>
+      </Router>
     </AuthProvider>
   );
 }

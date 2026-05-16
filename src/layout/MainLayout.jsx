@@ -2,7 +2,8 @@ import { useState } from 'react';
 import {
   Box, CssBaseline, AppBar, Drawer, Toolbar,
   IconButton, Menu, MenuItem, Divider, TextField,
-  List, ListItem, ListItemIcon, ListItemText, Typography
+  List, ListItem, ListItemIcon, ListItemText, Typography,
+  Avatar // 新增：引入 Avatar 组件
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -76,9 +77,20 @@ export default function MainLayout({ children, onNavigate }) {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* 右上角：登录显示用户名，未登录显示图标 */}
+          {/* 右上角：登录显示头像+用户名，未登录显示默认图标 */}
           <IconButton color="inherit" onClick={handleMenuOpen} sx={{ display: 'flex', alignItems: 'center' }}>
-            <AccountCircle sx={{ fontSize: 28 }} />
+            {user && user.avatar ? (
+              // 显示用户自定义头像
+              <Avatar
+                  src={user.avatar ? `http://localhost:5000${user.avatar}` : ''}
+                  sx={{ width: 40, height: 40, fontSize: 40 }}
+                >
+                  {user.nickname?.charAt(0) || user.username?.charAt(0)}
+              </Avatar>
+            ) : (
+              // 未登录/无头像时显示默认图标
+              <AccountCircle sx={{ fontSize: 28 }} />
+            )}
             {user && (
               <Typography sx={{ ml: 1, fontWeight: 'bold' }}>
                 {user.nickname || user.username}
