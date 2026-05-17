@@ -19,7 +19,7 @@ import { useAuth } from '../context/AuthContext'; // 引入 Auth
 const drawerWidth = 180;
 
 export default function MainLayout({ children, onNavigate }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(true); // 侧边栏开关状态
   const [anchorEl, setAnchorEl] = useState(null);
   const [search, setSearch] = useState('');
   const { t } = useLang();
@@ -28,9 +28,11 @@ export default function MainLayout({ children, onNavigate }) {
   const handleMenuOpen = (e) => setAnchorEl(e.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
 
+  // 核心修改：跳转页面 + 关闭侧边栏
   const goTo = (page) => {
-    onNavigate(page);
-    handleMenuClose();
+    onNavigate(page); // 跳转页面
+    setOpen(false);   // 关闭侧边栏
+    handleMenuClose();// 关闭右上角的菜单（可选，根据需求保留）
   };
 
   const handleSearch = (e) => {
@@ -46,6 +48,7 @@ export default function MainLayout({ children, onNavigate }) {
 
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
+          {/* 侧边栏展开/收起按钮（保留，用于手动切换） */}
           <IconButton color="inherit" edge="start" onClick={() => setOpen(!open)} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
@@ -127,20 +130,23 @@ export default function MainLayout({ children, onNavigate }) {
       </AppBar>
 
       <Drawer
-        variant="permanent"
+        variant="temporary"  // 改为临时模式，可完全隐藏
         open={open}
+        onClose={() => setOpen(false)}  // 点击外部关闭
         sx={{
-          width: open ? drawerWidth : 60,
+          width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: open ? drawerWidth : 60,
-            transition: 'width 0.3s ease',
+            width: drawerWidth,
             boxSizing: 'border-box',
+            transition: 'transform 0.3s ease',  // 改为位移动画更自然
+            transform: open ? 'translateX(0)' : 'translateX(-100%)',  // 隐藏时移出视口
           },
         }}
       >
         <Toolbar />
         <List>
+          {/* 点击后跳转并关闭侧边栏 */}
           <ListItem button onClick={() => goTo('home')}>
             <ListItemIcon><HomeIcon /></ListItemIcon>
             <ListItemText primary={t.home} />
@@ -157,16 +163,6 @@ export default function MainLayout({ children, onNavigate }) {
               <ListItemText primary={t.courseManage} />
             </ListItem>
           )}
-          
-          {/* <ListItem button onClick={() => goTo('profile')}>
-            <ListItemIcon><PersonIcon /></ListItemIcon>
-            <ListItemText primary={t.profile} />
-          </ListItem>
-
-          <ListItem button onClick={() => goTo('settings')}>
-            <ListItemIcon><SettingsIcon /></ListItemIcon>
-            <ListItemText primary={t.settings} />
-          </ListItem> */}
         </List>
       </Drawer>
 
